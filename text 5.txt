@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zhushi Construction - Ndërtojmë Shtëpinë Tuaj</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<meta name="description" content="Zhushi Construction ofron ndërtim shtëpish dhe projekte rezidenciale në Kosovë me profesionalizëm dhe cilësi të lartë.">
+
+<style>
+/* RESET & FONT */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, sans-serif; scroll-behavior:smooth;}
+body { background:#ffffff; color:#111827; line-height:1.6; }
+
+/* HEADER + NAV */
+header, nav { background:#111827; border-bottom:4px solid #10B981; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; position:sticky; top:0; z-index:100; }
+nav ul { list-style:none; display:flex; gap:15px; }
+nav ul li a { color:#e5e7eb; text-decoration:none; font-weight:600; }
+nav ul li a:hover { color:#10B981; }
+
+/* LOGO */
+.logo-text { font-size:1.8rem; font-weight:700; display:flex; align-items:center; gap:5px; text-decoration:none; transition: all 0.3s ease; }
+.logo-zhushi { color:#fff; }
+.logo-construction { color:#10B981; }
+.logo-text:hover .logo-construction { color:#34D399; transform:translateY(-3px); transition:0.3s; }
+
+/* HERO MODERN */
+.hero {
+  height:600px;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; color:#fff;
+  background: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)),
+              url("https://cdn.pixabay.com/photo/2017/08/10/03/39/construction-2618506_1280.jpg") center/cover no-repeat;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.hero h1 {
+  font-size:3rem;
+  letter-spacing:2px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+.hero .btn {
+  background:#10B981;
+  color:#111827;
+  border-radius:30px;
+  padding:12px 25px;
+  font-weight:600;
+  text-decoration:none;
+  margin-top:20px;
+  transition: all 0.3s ease;
+}
+.hero .btn:hover { transform: scale(1.1); background:#059669; }
+
+/* SECTIONS */
+section { padding:60px 20px; }
+section h2 { font-size:2.2rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; }
+
+/* CARDS */
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.card { background:#fff; border-left:5px solid #10B981; box-shadow:0 10px 25px rgba(0,0,0,0.08); border-radius:8px; overflow:hidden; padding:15px; transition:all 0.3s ease; }
+.card img { width:100%; border-radius:8px; margin-bottom:10px; }
+.card:hover { transform:scale(1.05); box-shadow:0 20px 35px rgba(0,0,0,0.2); }
+
+/* ADVANTAGES */
+.advantages { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.adv-card { background:#fff; text-align:center; padding:20px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1); opacity:0; transform:translateY(20px); transition: all 0.6s ease; }
+.adv-card.visible { opacity:1; transform:translateY(0); }
+.adv-card i { color:#10B981; margin-bottom:10px; }
+
+/* TESTIMONIALS */
+.testimonials { position:relative; max-width:800px; margin:auto; overflow:hidden; min-height:150px; }
+.testimonial { position:absolute; width:100%; opacity:0; transition: opacity 0.7s ease; }
+.testimonial.active { opacity:1; }
+.testimonial p { font-style:italic; margin-bottom:10px; }
+.testimonial h4 { color:#10B981; }
+
+/* CONTACT */
+.contact form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto; }
+.contact input, .contact textarea { border:2px solid #e5e7eb; padding:10px; border-radius:8px; width:100%; }
+.contact input:focus, .contact textarea:focus { outline:none; border-color:#10B981; }
+.contact button { background:#10B981; color:#111827; padding:12px 20px; border:none; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s; }
+.contact button:hover { background:#059669; }
+
+/* FOOTER */
+footer { background:#111827; color:#e5e7eb; text-align:center; padding:20px; border-top:4px solid #10B981; }
+footer .socials { margin:15px 0; }
+footer .socials a { color:#e5e7eb; margin:0 12px; font-size:2rem; text-decoration:none; display:inline-block; transition: all 0.3s ease; }
+footer .socials a:hover { color:#10B981; transform: scale(1.2) rotate(-5deg); }
+
+/* FLOATING CALL BUTTON */
+.floating-btn { position:fixed; right:20px; width:55px; height:55px; border-radius:50%; color:#fff; font-size:26px; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 10px 20px rgba(0,0,0,0.3); z-index:999; transition: transform 0.3s ease, background 0.3s ease; background:#059669; }
+.floating-btn:hover { transform: scale(1.2) rotate(-5deg); background:#10B981; }
+
+/* HAMBURGER */
+#hamburger { display:none; cursor:pointer; flex-direction:column; justify-content:center; }
+@media(max-width:768px){
+    #hamburger { display:flex; }
+    nav ul { flex-direction:column; background:#111827; position:absolute; top:60px; right:0; width:200px; display:none; padding:10px; border-radius:0 0 8px 8px;}
+    nav ul.show { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="#home" class="logo-text">
+        <span class="logo-zhushi">Zhushi</span>
+        <span class="logo-construction">Construction</span>
+    </a>
+    <nav>
+        <ul id="nav-list">
+            <li><a href="#home">Kryefaqja</a></li>
+            <li><a href="#about">Rreth Nesh</a></li>
+            <li><a href="#services">Shërbimet</a></li>
+            <li><a href="#contact">Kontakti</a></li>
+        </ul>
+        <div id="hamburger">
+            <div style="width:25px;height:3px;background:#fff;margin:5px 0;"></div>
+            <div style="width:25px;height:3px;background:#fff;margin:5px 0;"></div>
+            <div style="width:25px;height:3px;background:#fff;margin:5px 0;"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <h1>Nderto të ardhmen tënde</h1>
+    <a href="#contact" class="btn">Kontakto Tani</a>
+</section>
+
+<!-- Rreth Nesh -->
+<section id="about">
+    <h2>Rreth Nesh</h2>
+    <p>Zhushi Construction është një kompani ndërtimi në Kosovë, e specializuar në ndërtimin e shtëpive dhe projekteve rezidenciale. Ne ofrojmë cilësi, besueshmëri dhe profesionalizëm në çdo hap.</p>
+</section>
+
+<!-- ADVANTAZHET -->
+<section id="advantages">
+    <h2>Pse të Zgjidhni Ne</h2>
+    <div class="advantages">
+        <div class="adv-card"><i class="fas fa-hard-hat fa-2x"></i><h3>Profesionalizëm</h3><p>Ekip me eksperiencë të gjatë dhe profesionalizëm.</p></div>
+        <div class="adv-card"><i class="fas fa-clock fa-2x"></i><h3>Koha e Saktë</h3><p>Përfundim i projekteve brenda afateve të dakorduara.</p></div>
+        <div class="adv-card"><i class="fas fa-certificate fa-2x"></i><h3>Cilësi dhe Garanci</h3><p>Punime cilësore me materialet më të mira.</p></div>
+        <div class="adv-card"><i class="fas fa-handshake fa-2x"></i><h3>Besueshmëri</h3><p>Marrëdhënie të besueshme me klientët tanë.</p></div>
+    </div>
+</section>
+
+<!-- Shërbimet -->
+<section id="services">
+    <h2>Shërbimet</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2017/08/10/03/39/construction-2618506_1280.jpg" alt="Projekte Banimi" loading="lazy">
+            <h3>Projekte Banimi</h3>
+            <p>Ne ofrojmë ndërtim të plotë të shtëpive dhe objekteve rezidenciale, duke filluar nga koncepti dhe dizajni, e deri te realizimi final.</p>
+        </div>
+        <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/29/05/11/building-1869182_1280.jpg" alt="Projekte Komerciale" loading="lazy">
+            <h3>Projekte Komerciale</h3>
+            <p>Ofrojmë ndërtim të objekteve komerciale si zyra, dyqane dhe magazina, duke u fokusuar në planifikim të qartë dhe ekzekutim profesional.</p>
+        </div>
+        <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/19/15/28/construction-1836943_1280.jpg" alt="Renovime" loading="lazy">
+            <h3>Renovime</h3>
+            <p>Kryejmë renovime të plota për shtëpi dhe hapësira komerciale, duke transformuar ndërtesat ekzistuese në hapësira moderne dhe funksionale.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+    <h2>Çfarë thonë klientët</h2>
+    <div class="testimonials">
+        <div class="testimonial active"><p>"Shërbim profesional dhe i shpejtë. E rekomandoj pa dyshim!"</p><h4>- Arber K.</h4></div>
+        <div class="testimonial"><p>"Ekip i përkushtuar dhe projektet përfunduan brenda afatit."</p><h4>- Liridona H.</h4></div>
+        <div class="testimonial"><p>"Cilësi e lartë dhe komunikim i shkëlqyer me klientët."</p><h4>- Besart M.</h4></div>
+    </div>
+</section>
+
+<!-- Kontakt -->
+<section id="contact" class="contact">
+    <h2>Kontakti</h2>
+    <form action="https://formsubmit.co/valmirzhushi@outlook.com" method="POST">
+        <input type="hidden" name="_subject" value="Mesazh nga Zhushi Construction Website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Emri juaj" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="5" placeholder="Mesazhi juaj" required></textarea>
+        <button type="submit">Dërgo Mesazhin</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 Zhushi Construction. Të gjitha të drejtat e rezervuara.
+    <div class="socials">
+        <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:+38349196656" class="floating-btn call-btn2" aria-label="Call">
+    <i class="fas fa-phone"></i>
+</a>
+
+<script>
+// HAMBURGER TOGGLE
+const hamburger = document.getElementById('hamburger');
+const navList = document.getElementById('nav-list');
+hamburger.addEventListener('click', () => { navList.classList.toggle('show'); });
+
+// ADVANTAGES ON SCROLL
+const advCards = document.querySelectorAll('.adv-card');
+function showAdvCards() {
+  advCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50){ card.classList.add('visible'); }
+  });
+}
+window.addEventListener('scroll', showAdvCards);
+showAdvCards(); // show cards already in view
+
+// TESTIMONIALS SLIDER WITH FADE
+let tIndex=0;
+const testimonials=document.querySelectorAll(".testimonial");
+function showTestimonials(){
+  testimonials.forEach(t=>t.classList.remove("active"));
+  tIndex=(tIndex+1)%testimonials.length;
+  testimonials[tIndex].classList.add("active");
+}
+setInterval(showTestimonials,4000);
+</script>
+
+</body>
+</html>
